@@ -26,29 +26,32 @@ export default {
   setup(){
     let inputID = ref()
     let rightID = ref()
-    let URL = ref()
+    let URL_rec = ref()
+    let URL_rep = ref()
     let changeApp = ref()
 
     const fusion=()=>{
       rightID.value = "SSC0011"+inputID.value;
     }
 
-    const createURL=(ID)=>{
-      URL.value = 'https://sma-sta.cybozu.com/k/search?keyword='+ID+'&app=523'
+    const createURL_rec=(ID)=>{
+      URL_rec.value = 'https://sma-sta.cybozu.com/k/search?keyword='+ID+'&app=522'
+    }
+
+    const createURL_rep=(ID)=>{
+      URL_rep.value = 'https://sma-sta.cybozu.com/k/search?keyword='+ID+'&app=523'
     }
 
     const open_rec=()=>{
       fusion();
-      createURL(rightID.value);
-      location.href= URL.value;
-    }
-
-    const onDecode=(decodeString)=>{ 
-      decodeString
+      createURL_rec(rightID.value);
+      location.href= URL_rec.value;
     }
 
     const open_rep=()=>{
-
+      fusion();
+      createURL_rep(rightID.value);
+      location.href= URL_rep.value;
     }
 
     return{
@@ -58,8 +61,8 @@ export default {
       fusion,
       open_rec,
       open_rep,
-      createURL,
-      onDecode,
+      createURL_rec,
+      createURL_rep,
     }
   }
 }
